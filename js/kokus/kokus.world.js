@@ -1,4 +1,4 @@
-  Kokus.World = function(options, kokusObject){
+Kokus.World = function(options, kokusObject){
   options = !Helpers.isEmpty(options) ? options : {baseColor: {}};
   options.baseColor = options.baseColor || {};
   this.options = {baseColor: {}};
@@ -39,30 +39,29 @@ Kokus.World.prototype = {
     var geometry = new THREE.SphereGeometry(_self.options.radius, _self.options.segments, _self.options.segments);
     _self.planet = new THREE.Mesh(geometry, material);
 
-        _self.changeFaces();
-        _self.kokusObject.scene.add(_self.planet);
-        // Add animate function to rendering. To animate the world.
-        _self.kokusObject.animations.push({
-            function: _self.animate,
-            scope: _self
-        });
-    },
-    changeFaces: function () {
-        var _self = this;
-        _self.planet.geometry.faces.forEach(function (val, index) {
-            var red = Helpers.randomVariation(_self.options.baseColor.r, _self.options.baseColorVariation);
-            var green = Helpers.randomVariation(_self.options.baseColor.g, _self.options.baseColorVariation);
-            var blue = Helpers.randomVariation(_self.options.baseColor.b, _self.options.baseColorVariation);
-
-            red = Helpers.mapValue(red, 0, 255, 0, 1);
-            green = Helpers.mapValue(green, 0, 255, 0, 1);
-            blue = Helpers.mapValue(blue, 0, 255, 0, 1);
-
-            val.color.setRGB(red, green, blue);
-        });
-    },
-    animate: function () {
-        var _self = this;
-        _self.kokusObject.scene.rotation.y += 0.01;
-    }
+    _self.changeFaces();
+    _self.kokusObject.scene.add(_self.planet);
+    _self.kokusObject.animations.push({
+      function: _self.animate,
+      scope: _self
+    });
+  },
+  changeFaces: function(){
+    var _self = this;
+    _self.planet.geometry.faces.forEach(function(val, index){
+      var red = Helpers.randomVariation(_self.options.baseColor.r, _self.options.baseColorVariation);
+      var green = Helpers.randomVariation(_self.options.baseColor.g, _self.options.baseColorVariation);
+      var blue = Helpers.randomVariation(_self.options.baseColor.b, _self.options.baseColorVariation);
+ 
+      red = Helpers.mapValue(red, 0,255,0,1);
+      green = Helpers.mapValue(green, 0,255,0,1);
+      blue = Helpers.mapValue(blue, 0,255,0,1);
+      
+      val.color.setRGB(red, green, blue);
+    });
+  },
+  animate: function(){
+    var _self = this;
+    _self.planet.rotation.y += 0.01;
+  }
 };
