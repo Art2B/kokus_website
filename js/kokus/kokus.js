@@ -65,7 +65,7 @@ Kokus.prototype = {
     _self.stats.domElement.style.position = 'absolute';
     _self.stats.domElement.style.top = '0px';
     _self.stats.domElement.style.zIndex = 100;
-    document.body.appendChild( _self.stats.domElement );  
+    document.body.appendChild( _self.stats.domElement );
   },
   initWorld: function(){
     var _self = this;
@@ -88,10 +88,24 @@ Kokus.prototype = {
   animate: function(){
     var _self = this;
     _self.scene.rotation.y += 0.01;
+
+    if (_self.scene.position.y >5){
+      _self.scene.pos = false;
+    }
+    if (_self.scene.position.y < 0 || _self.scene.position.y < -5){
+      _self.scene.pos = true;
+    }
+    if (_self.scene.pos == true){
+      _self.scene.position.y += 0.03;
+      _self.scene.position.x += 0.01;
+    } else{
+      _self.scene.position.y -= 0.03;
+      _self.scene.position.x -= 0.01;
+    }
   },
   reset: function(){
     var _self = this;
-    _.each(_.rest(_self.scene.children, 0), function( object ) {
+    _.each(_.rest(_self.scene.children, 1), function( object ) {
       _self.scene.remove(object);
     });
     _self.initWorld();
