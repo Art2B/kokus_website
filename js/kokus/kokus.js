@@ -65,7 +65,7 @@ Kokus.prototype = {
     _self.stats.domElement.style.position = 'absolute';
     _self.stats.domElement.style.top = '0px';
     _self.stats.domElement.style.zIndex = 100;
-    document.body.appendChild( _self.stats.domElement );
+    document.body.appendChild( _self.stats.domElement );  
   },
   initWorld: function(){
     var _self = this;
@@ -91,7 +91,7 @@ Kokus.prototype = {
   },
   reset: function(){
     var _self = this;
-    _.each(_.rest(_self.scene.children, 1), function( object ) {
+    _.each(_.rest(_self.scene.children, 0), function( object ) {
       _self.scene.remove(object);
     });
     _self.initWorld();
