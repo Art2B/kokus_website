@@ -20,7 +20,7 @@ Kokus.prototype = {
     _self.initScene();
     _self.initCamera();
     _self.initRenderer();
-    _self.initControls();
+//    _self.initControls();
     _self.initLight();
     _self.initStats();
 
