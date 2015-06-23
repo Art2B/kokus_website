@@ -59,9 +59,5 @@ Kokus.World.prototype = {
       
       val.color.setRGB(red, green, blue);
     });
-  },
-  animate: function(){
-    var _self = this;
-    _self.planet.rotation.y += 0.01;
   }
 };
