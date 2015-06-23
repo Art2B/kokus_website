@@ -67,10 +67,6 @@ Kokus.World.prototype = {
     },
     animate: function () {
         var _self = this;
-//        console.log(_self.kokusObject.scene.children);
-        _self.kokusObject.scene.children.forEach(function (element) {
-            element.rotation.y += 0.01;
-        })
-//        _self.planet.rotation.y += 0.01;
+        _self.kokusObject.scene.rotation.y += 0.01;
     }
 };
