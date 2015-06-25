@@ -18,6 +18,7 @@ angular
     'ngTouch'
   ])
   .config(function ($routeProvider, $locationProvider) {
+    // $locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -27,7 +28,7 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/demo', {
+      .when('/live', {
         templateUrl: 'views/demo.html',
         controller: 'DemoCtrl'
       })
@@ -42,6 +43,4 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-
-      $locationProvider.html5Mode(true);
   });

@@ -1,0 +1,38 @@
+footer.page-footer {
+  padding-top: 0;
+  background: transparent;
+  ul {
+    text-align: center;
+    li {
+      display: inline-block;
+      margin: 0 20px;
+      line-height: 40px;
+      font-size: 16px;
+      color: #2c3e50;
+      a {
+        color: #2c3e50;
+        position: relative;
+        &:after {
+          content: '';
+          display: block;
+          height: 1px;
+          width: 102%;
+          background: indianred;
+          position: absolute;
+          left: -1%; bottom: 0px;
+          opacity: 0;
+          @include transition(all, 250ms, ease);
+        }
+        &:visited {
+          color: #2c3e50;
+        }
+        &:hover {
+          &:after {
+            bottom: -2px;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

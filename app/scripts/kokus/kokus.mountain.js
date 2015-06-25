@@ -1,4 +1,4 @@
-Kokus.Mountain = function(rotation, options, kokusObject){
+Kokus.Mountain = function(rotation, options, kokusObject, save){
   this.options = {};
 
   rotation = rotation || {};
@@ -18,6 +18,8 @@ Kokus.Mountain = function(rotation, options, kokusObject){
   this.options.color.base = options.color.base || defaultOption.color.base;
   this.options.mountainBaseSize = options.mountainBaseSize || defaultOption.mountainBaseSize;
 
+  this.options.save = (save !== undefined) ? save : true;
+    
   this.kokusObject = kokusObject;
 
   // Need to check collision
@@ -54,15 +56,29 @@ Kokus.Mountain.prototype = {
     _self.pivot.rotation.set(Math.radians(_self.options.rotation.x), Math.radians(_self.options.rotation.y), Math.radians(_self.options.rotation.z));
 
     _self.kokusObject.scene.add(_self.pivot);
+    _self.mountain.scale.x = 0;
+    _self.mountain.scale.y = 0;
+    _self.mountain.scale.z = 0;
     _self.kokusObject.animations.push({
       function: _self.animate,
       scope: _self
     });
+      
+    if(_self.options.save) {
+        var savedComponents = JSON.parse(localStorage.getItem("worldElements"));      
+        savedComponents.push({
+            type: "mountain",
+            //  baseY: _self.tree.position.baseY,
+            options: _self.options
+        });
+        localStorage.setItem("worldElements", JSON.stringify(savedComponents));
+    }
 
     return _self;
   },
   animate: function(){
     var _self = this;
+    var isGrowing;
 
     if(_self.mountain.position.y < _self.mountain.position.yNeeded){
       if(_self.mountain.position.yNeeded - _self.mountain.position.y > 0.1){
@@ -70,6 +86,19 @@ Kokus.Mountain.prototype = {
       } else {
         _self.mountain.position.y += _self.mountain.position.yNeeded - _self.mountain.position.y;
       }
+    }
+    
+    if(_self.mountain.scale.x >= 1){
+      isGrowing = false;
+    }
+    else{
+      isGrowing = true;
+    }
+
+    if(isGrowing){
+      _self.mountain.scale.x += 0.05;
+      _self.mountain.scale.y += 0.05;
+      _self.mountain.scale.z += 0.05;
     }
   },
   collision: function(){

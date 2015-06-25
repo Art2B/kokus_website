@@ -1,4 +1,4 @@
-Kokus.Tree = function(rotation, options, kokusObject){
+Kokus.Tree = function(rotation, options, kokusObject, save){
   this.options = {};
 
   rotation = rotation || {};
@@ -19,6 +19,8 @@ Kokus.Tree = function(rotation, options, kokusObject){
   this.options.leafBaseSize = options.leafBaseSize || defaultOption.leafBaseSize;
   this.options.leafBaseHeight = options.leafBaseHeight || defaultOption.leafBaseHeight;
 
+  this.options.save = (save !== undefined) ? save : true;
+    
   this.kokusObject = kokusObject;
 
 
@@ -52,15 +54,29 @@ Kokus.Tree.prototype = {
     _self.pivot.rotation.set(Math.radians(_self.options.rotation.x), Math.radians(_self.options.rotation.y), Math.radians(_self.options.rotation.z));
 
     _self.kokusObject.scene.add(_self.pivot);
+    _self.tree.scale.x = 0;
+    _self.tree.scale.y = 0;
+    _self.tree.scale.z = 0;
     _self.kokusObject.animations.push({
       function: _self.animate,
       scope: _self
     });
+      
+    if(_self.options.save) {
+        var savedComponents = JSON.parse(localStorage.getItem("worldElements"));      
+        savedComponents.push({
+            type: "tree",
+            //  baseY: _self.tree.position.baseY,
+            options: _self.options
+        });
+        localStorage.setItem("worldElements", JSON.stringify(savedComponents));
+    }
 
     return _self;
   },
   animate: function(){
     var _self = this;
+    var isGrowing;
 
     if(_self.tree.position.y < _self.tree.position.yNeeded){
       if(_self.tree.position.yNeeded - _self.tree.position.y > 0.1){
@@ -68,6 +84,19 @@ Kokus.Tree.prototype = {
       } else {
         _self.tree.position.y += _self.tree.position.yNeeded - _self.tree.position.y;
       }
+    }
+
+    if(_self.tree.scale.x >= 1){
+      isGrowing = false;
+    }
+    else{
+      isGrowing = true;
+    }
+
+    if(isGrowing){
+      _self.tree.scale.x += 0.05;
+      _self.tree.scale.y += 0.05;
+      _self.tree.scale.z += 0.05;
     }
   },
   collision: function(){

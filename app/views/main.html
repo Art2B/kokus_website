@@ -1,23 +1,30 @@
-<div class="main">
-  <div class="canvascontainer">
+<div class="main row">
+  <div class="canvascontainer" id="kokus-holder">
     <h1>Kokus</h1>
   </div>
   <section class="about">
     <h1>What's Kokus ?</h1>
-    <p>Bullshit ipsum</p>
-    <div class="button">See it live !</div>
+    <p>Kokus is a generative world build by your use of technology. Have you ever ask yourself what your data must look like ? We have the answer. Kokus generate a cute world who grows each time something happen on your phone. Let trees, houses and mountains grow !</p>
+    <p>But we know you have some destructives impulses. So we had a physical button, which allow you to DESTROY THE WORLD !!!!</p>
+    <p>No seriously. Push that button, and your world will burn into ashes, and like the phoenix, reborn, so you can build a new one :)</p>
+    <a class="waves-effect waves-light btn" href="#/live">See it live !</a>
   </section>
   <section class="how">
     <h1>How it works ?</h1>
-    <p>Bullshit ipsum</p>
-    <div class="button">Want to know more ?</div>
+    <p>It's pretty simple. We watch for some events on your phone, like SMS receipt, battery changement, phone calls. Then littles elves build stuff in your world. Trees, houses, mountains.</p>
+    <p>And the destruction of your world, well. Push the button, and then the bomb inside your world will explode. Simple as f*ck.</p>
+    <a class="waves-effect waves-light btn" href="#/about">Want to know more ?</a>
   </section>
   <section class="register">
     <h1>Want your own ?</h1>
     <p>Register now and we'll notice you when Kokus is released :)</p>
-    <form novalidate>
-      <input type="mail" placeholder="your.awesome@mail.com" ng-model="mail">
-      <input type="submit" value="Register" ng-click="registerMail(mail)">
+    <form novalidate class="col s6">
+      <div class="input-field col s6">
+        <input placeholder="your.awesome@mail.com" ng-model="mail" id="email" type="text" class="validate">
+      </div>
+      <button class="btn waves-effect waves-light" ng-click="registerMail(mail)" name="action">Register
+        <i class="material-icons"></i>
+      </button>
     </form>
   </section>
 </div>

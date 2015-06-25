@@ -9,7 +9,7 @@
  */
 angular.module('kokusSiteApp')
 .controller('DemoCtrl', function ($scope) {
-  $scope.instance = new Kokus();
+  $scope.instance = new Kokus({idContainer: "demo"});
 
   $scope.addTree = function(){
     new Kokus.Tree({x: Helpers.getRandomInt(0,360), y: Helpers.getRandomInt(0,360), z: Helpers.getRandomInt(0,360)}, {}, $scope.instance);
