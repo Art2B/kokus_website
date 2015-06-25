@@ -48,8 +48,31 @@ Kokus.Tree.prototype = {
     _self.pivot.rotation.set(Math.radians(_self.options.rotation.x), Math.radians(_self.options.rotation.y), Math.radians(_self.options.rotation.z));
 
     _self.kokusObject.scene.add(_self.pivot);
+    _self.tree.scale.x = 0;
+    _self.tree.scale.y = 0;
+    _self.tree.scale.z = 0;
+    _self.kokusObject.animations.push({
+      function: _self.animate,
+      scope: _self
+    });
+
+    return _self;
   },
   animate: function(){
-    console.log('animate function');
+    var _self = this;
+    var isGrowing;
+
+    if(_self.tree.scale.x >= 1){
+      isGrowing = false;
+    }
+    else{
+      isGrowing = true;
+    }
+
+    if(isGrowing){
+      _self.tree.scale.x += 0.05;
+      _self.tree.scale.y += 0.05;
+      _self.tree.scale.z += 0.05;
+    }
   }
 };
