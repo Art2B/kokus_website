@@ -107,10 +107,12 @@ Kokus.prototype = {
                 break;
         }
     i++;
-
-    if(i % 10)
-        _self.dailyEvents();
-    });      
+    });
+    setTimeout(function(){
+      for(var j=0; j<Math.floor(i/10); j++){
+        _self.dailyEvents();  
+      }
+    }, 1000);
   },
   render: function(){
     var _self = this;
