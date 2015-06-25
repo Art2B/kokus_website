@@ -1,31 +1,36 @@
 .demo {
-  .button {
-    position: absolute;
-    left: 0;
-    &:nth-child(1){
-      top: 30px;
-      background: forestgreen;
+    .button {
+        position: absolute;
+        left: 0;
+        min-width: 170px;
+        width: auto;
+        &:nth-child(1) {
+            top: 30px;
+            background: navy;
+        }
+        &:nth-child(2) {
+            top: 90px;
+            background: forestgreen;
+        }
+        &:nth-child(3) {
+            top: 120px;
+            background: purple;
+        }
+        &:nth-child(4) {
+            top: 150px;
+            background: #53371f;
+        }
+        &:nth-child(5) {
+            top: 180px;
+            background-color: darkred;
+        }
+        text-transform: none;
     }
-    &:nth-child(2){
-      top: 60px;
-      background: brown;
-    }
-    &:nth-child(3){
-      top: 90px;
-      background: skyblue;
-    }
-    &:nth-child(4){
-      top: 120px;
-      background: chocolate;
-    }
-    &:nth-child(5){
-      top: 150px;
-    }
-  }
 }
 
 .live footer {
-  width: 100%;
-  position: absolute;
-  left: 0; bottom: 0;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }

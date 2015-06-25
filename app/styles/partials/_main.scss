@@ -1,35 +1,46 @@
 .main {
-  .canvascontainer {
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    h1 {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      line-height: 100vh;
-      text-align: center;
-      text-transform: uppercase;
-      font-size: 100px;
-      color: #2c3e50;
+    .canvascontainer {
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        h1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            line-height: 100vh;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 100px;
+            color: #2c3e50;
+        }
     }
-  }
-  section {
-    padding: 2% 0;
-    // h1 {
-    //   font-size: 26px;
-    //   line-height: 32px;
-    //   text-align: center;
-    // }
-    // p {
-    //   font-size: 16px;
-    //   line-height: 24px;
-    //   width: 60%;
-    //   margin: auto;
-    // }
-    // .button {
-    //   margin: auto;
-    // }
-  }
+    section {
+        padding: 5% 0;
+        text-align: center;
+        h1 {
+            font-size: 36px;
+            line-height: 32px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 24px;
+            width: 60%;
+            margin: 4px auto;
+        }
+        .btn {
+            margin: 10px auto 0;
+        }
+        form {
+            button {
+                margin-top: 24px;
+            }
+        }
+    }
+    section.dark {
+        background: rgb(247, 247, 247);
+    }
 }
