@@ -1,4 +1,4 @@
-Kokus.Tree = function(rotation, options, kokusObject){
+Kokus.Tree = function(rotation, options, kokusObject, save){
   this.options = {};
 
   rotation = rotation || {};
@@ -16,9 +16,10 @@ Kokus.Tree = function(rotation, options, kokusObject){
   this.options.color.base = options.color.base || defaultOption.color.base;
   this.options.leafBaseSize = options.leafBaseSize || defaultOption.leafBaseSize;
   this.options.leafBaseHeight = options.leafBaseHeight || defaultOption.leafBaseHeight;
-
+  this.options.save = (save !== undefined) ? save : true;
+    
   this.kokusObject = kokusObject;
-
+    
   this.create();
   return this;
 };
@@ -39,6 +40,7 @@ Kokus.Tree.prototype = {
     pineLeaf.applyMatrix( new THREE.Matrix4().makeTranslation(0, (_self.options.leafBaseHeight/2)+((_self.options.leafBaseHeight*0.15)/2), 0) );
     pineBase.applyMatrix( new THREE.Matrix4().makeTranslation(0, (_self.options.leafBaseHeight*0.15)/2, 0) );
 
+      console.log(_self.kokusObject);
     _self.tree = new THREE.Mesh();
     _self.tree.add(pineLeaf).add(pineBase);
     _self.tree.position.y = _self.kokusObject.world.planet.geometry.parameters.radius;
@@ -48,6 +50,17 @@ Kokus.Tree.prototype = {
     _self.pivot.rotation.set(Math.radians(_self.options.rotation.x), Math.radians(_self.options.rotation.y), Math.radians(_self.options.rotation.z));
 
     _self.kokusObject.scene.add(_self.pivot);
+        
+    if(_self.options.save) {
+        var savedComponents = JSON.parse(localStorage.getItem("worldElements"));      
+        savedComponents.push({
+            type: "tree",
+            //  baseY: _self.tree.position.baseY,
+            options: _self.options
+        });
+        localStorage.setItem("worldElements", JSON.stringify(savedComponents));
+    }
+
   },
   animate: function(){
     console.log('animate function');

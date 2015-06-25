@@ -1,4 +1,4 @@
-Kokus.House = function(rotation, options, kokusObject){
+Kokus.House = function(rotation, options, kokusObject, save){
   this.options = {};
 
   rotation = rotation || {};
@@ -18,6 +18,8 @@ Kokus.House = function(rotation, options, kokusObject){
   this.options.chimneyBaseSize = this.options.houseBaseSize/4;
   this.options.roofBaseSize = this.options.houseBaseSize/2;
 
+  this.options.save = (save !== undefined) ? save : true;
+    
   this.kokusObject = kokusObject;
 
   this.create();
@@ -58,7 +60,17 @@ Kokus.House.prototype = {
     _self.pivot.add(_self.house);
     _self.pivot.rotation.set(Math.radians(_self.options.rotation.x), Math.radians(_self.options.rotation.y), Math.radians(_self.options.rotation.z));
 
-  _self.kokusObject.scene.add(_self.pivot);
+    _self.kokusObject.scene.add(_self.pivot);
+      
+    if(_self.options.save) {
+        var savedComponents = JSON.parse(localStorage.getItem("worldElements"));      
+        savedComponents.push({
+            type: "house",
+            //  baseY: _self.tree.position.baseY,
+            options: _self.options
+        });
+        localStorage.setItem("worldElements", JSON.stringify(savedComponents));
+    }
   },
   animate: function(){
     console.log('animate function');

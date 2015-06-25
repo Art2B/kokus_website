@@ -24,7 +24,8 @@ Kokus.prototype = {
     _self.initStats();
 
     _self.render();
-   _self.initWorld();
+    _self.initWorld();
+    _self.initSavedWorld();
   },
   initScene: function(){
     var _self = this;
@@ -72,6 +73,38 @@ Kokus.prototype = {
     _self.initLight();
     _self.camera.position.z = 50;
     _self.world = new Kokus.World({},_self);
+      
+    if(localStorage.getItem("worldElements") == null) {
+        localStorage.setItem("worldElements", JSON.stringify([]));
+    }
+  },
+  initSavedWorld: function(){
+    var _self = this;
+    var savedElements = JSON.parse(localStorage.getItem("worldElements"));
+ 
+      console.log(savedElements);
+    if(savedElements.length > 0) {
+        console.log('Saved elements on world !');
+    } else {
+        console.log('Empty world !');
+    }
+      
+      
+    savedElements.forEach(function(elem){
+        switch(elem.type) {
+            case "tree":
+                new Kokus.Tree(elem.options.rotation, elem.options, _self, false);
+                break;
+            case "house":
+                new Kokus.House(elem.options.rotation, elem.options, _self, false);
+                break;
+            case "mountain":
+                new Kokus.Mountain(elem.options.rotation, elem.options, _self, false);
+                break;
+        }
+    });
+    
+      
   },
   render: function(){
     var _self = this;
@@ -109,5 +142,6 @@ Kokus.prototype = {
       _self.scene.remove(object);
     });
     _self.initWorld();
+    localStorage.setItem("worldElements", JSON.stringify([]));
   }
 };
