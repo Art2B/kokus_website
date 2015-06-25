@@ -1,0 +1,25 @@
+.demo {
+  .button {
+    position: absolute;
+    left: 0;
+    &:nth-child(1){
+      top: 30px;
+      background: forestgreen;
+    }
+    &:nth-child(2){
+      top: 60px;
+      background: brown;
+    }
+    &:nth-child(3){
+      top: 90px;
+      background: skyblue;
+    }
+    &:nth-child(4){
+      top: 120px;
+      background: chocolate;
+    }
+    &:nth-child(5){
+      top: 150px;
+    }
+  }
+}

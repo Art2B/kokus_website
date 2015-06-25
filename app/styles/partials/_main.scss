@@ -1,0 +1,30 @@
+.main {
+  .canvascontainer {
+    height: 100vh;
+    width: 100%;
+    background: indianred;
+    h1 {
+      line-height: 100vh;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 100px;
+    }
+  }
+  section {
+    padding: 2% 0;
+    h1 {
+      font-size: 26px;
+      line-height: 32px;
+      text-align: center;
+    }
+    p {
+      font-size: 16px;
+      line-height: 24px;
+      width: 60%;
+      margin: auto;
+    }
+    .button {
+      margin: auto;
+    }
+  }
+}
