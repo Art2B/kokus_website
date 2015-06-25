@@ -15,16 +15,16 @@
         <p>And the destruction of your world, well. Push the button, and then the bomb inside your world will explode. Simple as f*ck.</p>
         <a class="waves-effect waves-light btn" href="#/about">Want to know more ?</a>
     </section>
-    <section class="register">
+    <section class="register row">
         <h1>Want your own ?</h1>
         <p>Register now and we'll notice you when Kokus is released :)</p>
-        <form novalidate class="col s6 offset-s3">
-            <div class="input-field col s6">
+        <form novalidate class="col s12 m6 offset-m3">
+            <div class="input-field col s12">
                 <input placeholder="your.awesome@mail.com" ng-model="mail" id="email" type="text" class="validate">
             </div>
-            <button class="btn waves-effect waves-light" ng-click="registerMail(mail)" name="action">Register
-                <i class="material-icons"></i>
-            </button>
         </form>
+        <div class="col s12 m6 offset-m3">
+          <button class="waves-effect waves-light btn" ng-click="registerMail(mail)" name="action">Register</button>
+        </div>
     </section>
 </div>
