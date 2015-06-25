@@ -50,7 +50,7 @@ Kokus.Mountain.prototype = {
 
     _self.pivot = new THREE.Object3D();
     _self.pivot.add(_self.mountain);
-    _self.pivot.rotation.set(_self.options.rotation.x, _self.options.rotation.y, _self.options.rotation.z);
+    _self.pivot.rotation.set(Math.radians(_self.options.rotation.x), Math.radians(_self.options.rotation.y), Math.radians(_self.options.rotation.z));
 
     _self.kokusObject.scene.add(_self.pivot);
 

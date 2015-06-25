@@ -55,7 +55,7 @@ Kokus.prototype = {
   },
   initLight: function(){
     var _self = this;
-    var light = new THREE.PointLight("#ffffff", 0.5);
+    var light = new THREE.SpotLight("#ffffff", 0.5);
     light.position.set(100, 100, 0);
     _self.scene.add(light);
 
@@ -106,9 +106,7 @@ Kokus.prototype = {
                 }, 800);
                 break;
         }
-    });
-    
-      
+    });      
   },
   render: function(){
     var _self = this;
@@ -120,7 +118,8 @@ Kokus.prototype = {
 
     _self.animate();
 
-    _self.renderer.render( _self.scene, _self.camera );   
+    _self.renderer.render( _self.scene, _self.camera );  
+    THREEx.WindowResize(_self.renderer, _self.camera);
   },
   animate: function(){
     var _self = this;
@@ -145,7 +144,7 @@ Kokus.prototype = {
     _.each(_.rest(_self.scene.children, 1), function( object ) {
       _self.scene.remove(object);
     });
-    _self.initWorld();
     localStorage.setItem("worldElements", JSON.stringify([]));
+    _self.initWorld();    
   }
 };
