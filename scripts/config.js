@@ -1,13 +1,13 @@
 var Config = {
   world: {
-    backgroundColor: 0xffffff,
+    backgroundColor: 0xcccccc,
     baseColor: {
       r: 39,
       g: 174,
       b: 96
     },
     baseColorVariation: 10,
-    radius: 25,
+    radius: 20,
     segments: 13,
   },
   tree: {
