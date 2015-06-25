@@ -13,6 +13,7 @@ angular.module('kokusSiteApp')
 
   $scope.state = '';
   $scope.instance = new Kokus({idContainer: "kokus-holder"});
+  $scope.sendState = '';
 
   $scope.registerMail = function(mail){
     if(Helpers.validateEmail(mail)){
@@ -21,8 +22,11 @@ angular.module('kokusSiteApp')
         mail: mail,
         date: new Date()
       });
+      $scope.mail = '';
+      $scope.sendState = 'Registration is complete :D !';
     } else {
       $scope.state = 'invalid';
+      $scope.sendState = 'Your mail is invalid :-(';
     }
   };
 

@@ -7,7 +7,7 @@
         <p>Kokus is a generative world build by your use of technology. Have you ever ask yourself what your data must look like ? We have the answer. Kokus generate a cute world who grows each time something happen on your phone. Let trees, houses and mountains grow !</p>
         <p>But we know you have some destructives impulses. So we had a physical button, which allow you to DESTROY THE WORLD !!!!</p>
         <p>No seriously. Push that button, and your world will burn into ashes, and like the phoenix, reborn, so you can build a new one :)</p>
-        <a class="waves-effect waves-light btn" href="#/live">See it live !</a>
+        <a class="waves-effect waves-light btn" href="#live">See it live !</a>
     </section>
     <section class="how dark">
         <h1>How it works ?</h1>
@@ -25,6 +25,9 @@
         </form>
         <div class="col s12 m6 offset-m3">
           <button class="waves-effect waves-light btn" ng-click="registerMail(mail)" name="action">Register</button>
+        </div>
+        <div class="col s12 m6 offset-m3">
+            <p>{{sendState}}</p>
         </div>
     </section>
 </div>
