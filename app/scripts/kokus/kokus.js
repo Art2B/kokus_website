@@ -23,7 +23,7 @@ Kokus.prototype = {
     _self.initCamera();
     _self.initRenderer();
     // _self.initControls();
-    _self.initStats();
+    // _self.initStats();
 
     _self.render();
    _self.initWorld();
@@ -118,7 +118,7 @@ Kokus.prototype = {
     _self.animations.forEach(function (element, index) {
       typeof element.function === 'function' && element.function.bind(element.scope)();
     });
-    _self.stats.update();
+    // _self.stats.update();
 
     _self.animate();
 
