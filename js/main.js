@@ -34,10 +34,9 @@ var Main = (function (my, Helpers) {
 
     my.init = function () {
         console.log('init');
-        my.instance = new Kokus();
+        my.instance = new Kokus({idContainer: "coucou"});
     }
     return my;
 }(Main || {}, Helpers || {}));
 
 
-Main.init();

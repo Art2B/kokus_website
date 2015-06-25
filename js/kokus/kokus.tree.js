@@ -40,7 +40,6 @@ Kokus.Tree.prototype = {
     pineLeaf.applyMatrix( new THREE.Matrix4().makeTranslation(0, (_self.options.leafBaseHeight/2)+((_self.options.leafBaseHeight*0.15)/2), 0) );
     pineBase.applyMatrix( new THREE.Matrix4().makeTranslation(0, (_self.options.leafBaseHeight*0.15)/2, 0) );
 
-      console.log(_self.kokusObject);
     _self.tree = new THREE.Mesh();
     _self.tree.add(pineLeaf).add(pineBase);
     _self.tree.position.y = _self.kokusObject.world.planet.geometry.parameters.radius;
