@@ -81,13 +81,6 @@ Kokus.prototype = {
   initSavedWorld: function(){
     var _self = this;
     var savedElements = JSON.parse(localStorage.getItem("worldElements"));
- 
-      console.log(savedElements);
-    if(savedElements.length > 0) {
-        console.log('Saved elements on world !');
-    } else {
-        console.log('Empty world !');
-    }
       
       
     savedElements.forEach(function(elem){
