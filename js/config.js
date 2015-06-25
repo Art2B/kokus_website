@@ -32,7 +32,7 @@ var Config = {
   mountain: {
     snow: {
       color: {
-        snow: 0xFFFFFF,
+        snow: 0xfafafa,
         base: 0x564334
       },
       mountainBaseSize: 3,

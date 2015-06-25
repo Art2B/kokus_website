@@ -96,10 +96,14 @@ Kokus.prototype = {
                 new Kokus.Tree(elem.options.rotation, elem.options, _self, false);
                 break;
             case "house":
-                new Kokus.House(elem.options.rotation, elem.options, _self, false);
+                setTimeout(function(){
+                    new Kokus.House(elem.options.rotation, elem.options, _self, false);
+                }, 400);
                 break;
             case "mountain":
-                new Kokus.Mountain(elem.options.rotation, elem.options, _self, false);
+                setTimeout(function(){
+                    new Kokus.Mountain(elem.options.rotation, elem.options, _self, false);
+                }, 800);
                 break;
         }
     });
