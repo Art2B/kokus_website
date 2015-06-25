@@ -13,13 +13,13 @@ angular.module('kokusSiteApp')
   console.log($scope.instance);
 
   $scope.addTree = function(){
-    new Kokus.Tree({x: Helpers.getRandomInt(0,360), y: Helpers.getRandomInt(0,360), z: Helpers.getRandomInt(0,360)}, {}, $scope.instance);
+    new Kokus.Tree({x: Helpers.getRandomInt(0,360), y: Helpers.getRandomInt(0,360), z: Helpers.getRandomInt(0,360)}, {}, $scope.instance).create();
   };
   $scope.addHouse = function(){
-    new Kokus.House({x: Helpers.getRandomInt(0,360), y: Helpers.getRandomInt(0,360), z: Helpers.getRandomInt(0,360)}, {}, $scope.instance);
+    new Kokus.House({x: Helpers.getRandomInt(0,360), y: Helpers.getRandomInt(0,360), z: Helpers.getRandomInt(0,360)}, {}, $scope.instance).create();
   };
   $scope.addMountain = function(){
-    new Kokus.Mountain({x: Helpers.getRandomInt(0,360), y: Helpers.getRandomInt(0,360), z: Helpers.getRandomInt(0,360)}, {}, $scope.instance);
+    new Kokus.Mountain({x: Helpers.getRandomInt(0,360), y: Helpers.getRandomInt(0,360), z: Helpers.getRandomInt(0,360)}, {}, $scope.instance).create();
   };
   $scope.destroyWorld = function(){
     $scope.instance.reset();

@@ -25,7 +25,8 @@ Kokus.Tree = function(rotation, options, kokusObject, save){
 
 
   // need to check collision
-  this.create();
+  // this.create();
+  return this;
 };
 Kokus.Tree.prototype = {
   kokusObject: {},
@@ -40,13 +41,14 @@ Kokus.Tree.prototype = {
     var geometryBase = new THREE.CylinderGeometry( _self.options.leafBaseSize/4, _self.options.leafBaseSize/4, _self.options.leafBaseHeight*0.15, 4);       
     var pineLeaf = new THREE.Mesh( geometryLeaf, materialLeaf);
     var pineBase = new THREE.Mesh( geometryBase, materialBase);
+    var space = _self.options.leafBaseSize / 10;
 
     pineLeaf.applyMatrix( new THREE.Matrix4().makeTranslation(0, (_self.options.leafBaseHeight/2)+((_self.options.leafBaseHeight*0.15)/2), 0) );
-    pineBase.applyMatrix( new THREE.Matrix4().makeTranslation(0, (_self.options.leafBaseHeight*0.15)/2, 0) );
+    pineBase.applyMatrix( new THREE.Matrix4().makeTranslation(0, (_self.options.leafBaseHeight*0.0025), 0) );
 
     _self.tree = new THREE.Mesh();
     _self.tree.add(pineLeaf).add(pineBase);
-    _self.tree.position.y = _self.kokusObject.world.planet.geometry.parameters.radius;
+    _self.tree.position.y = _self.kokusObject.world.planet.geometry.parameters.radius - space;
     _self.tree.position.baseY = _self.tree.position.y;
 
     _self.pivot = new THREE.Object3D();
