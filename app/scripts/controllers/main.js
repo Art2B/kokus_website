@@ -8,14 +8,21 @@
  * Controller of the kokusSiteApp
  */
 angular.module('kokusSiteApp')
-.controller('MainCtrl', function ($scope) {
+.controller('MainCtrl', function ($scope, $firebase) {
+  var ref = new Firebase('https://kokus-site.firebaseio.com/registration');
+
+  $scope.state = '';
   $scope.instance = new Kokus({idContainer: "kokus-holder"});
 
   $scope.registerMail = function(mail){
     if(Helpers.validateEmail(mail)){
-      console.log(mail);
+      var mailId = ref.push();
+      mailId.set({
+        mail: mail,
+        date: new Date()
+      });
     } else {
-      console.log('pas bon :)');
+      $scope.state = 'invalid';
     }
   };
 
