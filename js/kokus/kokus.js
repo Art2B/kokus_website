@@ -89,8 +89,7 @@ Kokus.prototype = {
     } else {
         console.log('Empty world !');
     }
-      
-      
+    
     savedElements.forEach(function(elem){
         switch(elem.type) {
             case "tree":
